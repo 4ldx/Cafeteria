@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Café Central | Especialidad y Repostería</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Encabezado -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#home" class="brand">CAFÉ CENTRAL</a>
+      <nav class="nav-menu">
+        <a href="#home">Inicio</a>
+        <a href="#menu">Menú</a>
+        <a href="#pedido">Ordenar</a>
+        <a href="#contacto">Ubicación</a>
+      </nav>
+    </div>
+    <div class="gold-line"></div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <h1>El arte de un buen café</h1>
+        <p class="hero-subtitle">Granos de altura, tostado artesanal y momentos inolvidables.</p>
+        <a href="#menu" class="btn-primary">Ver Menú</a>
+      </div>
+    </section>
+
+    <!-- Sección de Menú Interactivo -->
+    <section class="menu-section" id="menu">
+      <div class="section-title">
+        <span>Nuestras Especialidades</span>
+        <h2>Elige lo que se te antoje</h2>
+      </div>
+
+      <div class="menu-grid">
+        <!-- Item 1 -->
+        <div class="menu-item" data-product="Café Espresso" data-price="$45">
+          <div class="item-info">
+            <h3>Café Espresso</h3>
+            <p>Doble carga de café de especialidad, cuerpo denso y crema perfecta.</p>
+            <span class="price">$45 MXN</span>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="menu-item" data-product="Latte de Vainilla" data-price="$65">
+          <div class="item-info">
+            <h3>Latte de Vainilla</h3>
+            <p>Espresso, leche vaporizada con arte latte y toque de vainilla natural.</p>
+            <span class="price">$65 MXN</span>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="menu-item" data-product="Cold Brew" data-price="$60">
+          <div class="item-info">
+            <h3>Cold Brew</h3>
+            <p>Extracción en frío durante 24 horas, suave, refrescante y sin acidez.</p>
+            <span class="price">$60 MXN</span>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="menu-item" data-product="Panini de Pavo y Queso" data-price="$85">
+          <div class="item-info">
+            <h3>Panini de Pavo y Queso</h3>
+            <p>Pan artesanal crujiente, pechuga de pavo, queso gouda fundido y aderezo de la casa.</p>
+            <span class="price">$85 MXN</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botón de Orden por WhatsApp -->
+      <div class="cta-wrap" id="pedido">
+        <button type="button" class="btn-whatsapp" id="btnOrdenar">Ordenar por WhatsApp</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Script integrado para procesar el pedido directamente a WhatsApp -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const TELEFONO_WHATSAPP = "528611265737"; // Cambia por el número del cliente
+      const menuItems = document.querySelectorAll(".menu-item");
+      const btnOrdenar = document.getElementById("btnOrdenar");
+
+      // Selección visual de productos
+      menuItems.forEach(item => {
+        item.addEventListener("click", () => {
+          item.classList.toggle("selected");
+        });
+      });
+
+      // Enviar pedido por WhatsApp
+      if (btnOrdenar) {
+        btnOrdenar.addEventListener("click", (e) => {
+          e.preventDefault();
+
+          const seleccionados = document.querySelectorAll(".menu-item.selected");
+          let mensaje = "¡Hola CAFÉ CENTRAL! Me gustaría hacer el siguiente pedido:\n";
+
+          if (seleccionados.length > 0) {
+            seleccionados.forEach(item => {
+              const producto = item.getAttribute("data-product");
+              const precio = item.getAttribute("data-price");
+              mensaje += `• ${producto} (${precio})\n`;
+            });
+            mensaje += "\n¿Cuál es el tiempo estimado de entrega o preparación?";
+          } else {
+            mensaje += "Hola, me gustaría conocer su menú completo y ubicación.";
+          }
+
+          const urlWhatsApp = `https://api.whatsapp.com/send?phone=${TELEFONO_WHATSAPP}&text=${encodeURIComponent(mensaje)}`;
+          window.open(urlWhatsApp, "_blank");
+        });
+      }
+    });
+  </script>
+</body>
+</html>
