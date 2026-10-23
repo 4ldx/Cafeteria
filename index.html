@@ -1,130 +1,470 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Café Central | Especialidad y Repostería</title>
+  <title>Café Central | Specialty Coffee & Bistro</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-  <!-- Encabezado -->
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="#home" class="brand">CAFÉ CENTRAL</a>
-      <nav class="nav-menu">
-        <a href="#home">Inicio</a>
-        <a href="#menu">Menú</a>
-        <a href="#pedido">Ordenar</a>
-        <a href="#contacto">Ubicación</a>
-      </nav>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            roast: {
+              dark: '#0F0B08',
+              surface: '#1A1410',
+              card: '#241C17',
+              accent: '#D97706',
+              gold: '#F59E0B',
+              cream: '#F5EBE6',
+              muted: '#9E8E85',
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            display: ['Syne', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-roast-dark text-roast-cream font-sans antialiased overflow-x-hidden selection:bg-roast-accent selection:text-white">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-[#080504] text-roast-muted text-xs py-2 px-6 flex justify-between items-center border-b border-white/5">
+    <div class="flex items-center gap-2">
+      <i class="ph-bold ph-drop text-roast-gold"></i>
+      <span>Cosechas de altura tostadas artesanalmente en lote pequeño</span>
     </div>
-    <div class="gold-line"></div>
+    <div class="hidden md:flex items-center gap-6 text-xs text-roast-muted">
+      <span><i class="ph-bold ph-clock mr-1"></i> Lun - Dom: 7:00 AM - 10:00 PM</span>
+      <a href="https://api.whatsapp.com/send?phone=528611265737&text=Hola,%20quisiera%20reservar%20una%20mesa%20o%20consultar%20eventos." target="_blank" class="hover:text-roast-gold transition-colors">Reservación de Mesas ↗</a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-roast-dark/90 backdrop-blur-md border-b border-white/10 transition-all">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-roast-accent flex items-center justify-center text-white text-xl font-display font-bold shadow-md">
+          C
+        </div>
+        <div>
+          <span class="font-display font-extrabold text-2xl tracking-tight text-white block leading-none">CAFÉ CENTRAL</span>
+          <span class="text-[10px] uppercase tracking-widest text-roast-accent font-semibold">Specialty Coffee & Bistro</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-roast-muted">
+        <a href="#lab" class="hover:text-roast-accent transition-colors flex items-center gap-1.5">
+          <i class="ph-bold ph-flask text-roast-accent"></i> Laboratorio Barista
+        </a>
+        <a href="#menu" class="hover:text-roast-accent transition-colors">Menú de Especialidad</a>
+        <a href="#pickup" class="hover:text-roast-accent transition-colors">Pick-Up Express</a>
+      </nav>
+
+      <a href="#pickup" class="bg-roast-accent hover:bg-roast-gold text-roast-dark px-5 py-2.5 rounded-full text-xs font-extrabold tracking-wider uppercase transition-all shadow-md flex items-center gap-2">
+        <i class="ph-bold ph-coffee"></i> Pedido Rápido
+      </a>
+    </div>
   </header>
 
-  <main>
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-      <div class="hero-content">
-        <h1>El arte de un buen café</h1>
-        <p class="hero-subtitle">Granos de altura, tostado artesanal y momentos inolvidables.</p>
-        <a href="#menu" class="btn-primary">Ver Menú</a>
+  <!-- Hero Section -->
+  <section class="relative min-h-[85vh] flex items-center py-20 px-6 bg-gradient-to-b from-roast-surface via-roast-dark to-roast-dark border-b border-white/5">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-7 space-y-6">
+        <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-roast-accent/15 text-roast-gold text-xs font-extrabold uppercase tracking-widest border border-roast-accent/30">
+          <i class="ph-bold ph-fire"></i> Extracción de Precisión & Barra de Finca
+        </span>
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight text-white">
+          El arte del café de especialidad en su <span class="text-roast-accent">máxima expresión</span>
+        </h1>
+        <p class="text-roast-muted text-base sm:text-lg max-w-2xl leading-relaxed">
+          Seleccionamos microlotes con puntajes +85 SCA provenientes de Chiapas, Oaxaca y Veracruz. Disfruta un perfil sensorial calibrado por baristas certificados.
+        </p>
+        <div class="flex flex-wrap gap-4 pt-2">
+          <a href="#lab" class="bg-roast-accent hover:bg-roast-gold text-roast-dark px-7 py-3.5 rounded-full text-sm font-extrabold tracking-wide uppercase transition-all shadow-lg flex items-center gap-2">
+            <i class="ph-bold ph-sliders-horizontal"></i> Probar Extracción Lab
+          </a>
+          <a href="#menu" class="bg-white/5 hover:bg-white/10 text-white border border-white/15 px-7 py-3.5 rounded-full text-sm font-bold tracking-wide transition-all">
+            Explorar Menú Bistro ↗
+          </a>
+        </div>
       </div>
-    </section>
-
-    <!-- Sección de Menú Interactivo -->
-    <section class="menu-section" id="menu">
-      <div class="section-title">
-        <span>Nuestras Especialidades</span>
-        <h2>Elige lo que se te antoje</h2>
-      </div>
-
-      <div class="menu-grid">
-        <!-- Item 1 -->
-        <div class="menu-item" data-product="Café Espresso" data-price="$45">
-          <div class="item-info">
-            <h3>Café Espresso</h3>
-            <p>Doble carga de café de especialidad, cuerpo denso y crema perfecta.</p>
-            <span class="price">$45 MXN</span>
-          </div>
-        </div>
-
-        <!-- Item 2 -->
-        <div class="menu-item" data-product="Latte de Vainilla" data-price="$65">
-          <div class="item-info">
-            <h3>Latte de Vainilla</h3>
-            <p>Espresso, leche vaporizada con arte latte y toque de vainilla natural.</p>
-            <span class="price">$65 MXN</span>
-          </div>
-        </div>
-
-        <!-- Item 3 -->
-        <div class="menu-item" data-product="Cold Brew" data-price="$60">
-          <div class="item-info">
-            <h3>Cold Brew</h3>
-            <p>Extracción en frío durante 24 horas, suave, refrescante y sin acidez.</p>
-            <span class="price">$60 MXN</span>
-          </div>
-        </div>
-
-        <!-- Item 4 -->
-        <div class="menu-item" data-product="Panini de Pavo y Queso" data-price="$85">
-          <div class="item-info">
-            <h3>Panini de Pavo y Queso</h3>
-            <p>Pan artesanal crujiente, pechuga de pavo, queso gouda fundido y aderezo de la casa.</p>
-            <span class="price">$85 MXN</span>
+      <div class="lg:col-span-5 relative">
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10">
+          <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1000&q=85" alt="Barista extrayendo café de especialidad" class="w-full h-[480px] object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-roast-dark via-transparent to-transparent"></div>
+          <div class="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-roast-dark/80 backdrop-blur-md border border-white/15">
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-[10px] uppercase tracking-widest text-roast-gold font-extrabold block">Grano del Mes</span>
+                <h4 class="font-display font-bold text-lg text-white">Pluma Hidalgo, Oaxaca</h4>
+              </div>
+              <span class="text-xs font-extrabold bg-roast-accent/20 text-roast-gold border border-roast-accent/30 px-3 py-1 rounded-full">SCA 87.5</span>
+            </div>
+            <p class="text-xs text-roast-muted mt-2">Notas de cata: Chocolate oscuro, miel de azahar y acidez málica brillante.</p>
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Botón de Orden por WhatsApp -->
-      <div class="cta-wrap" id="pedido">
-        <button type="button" class="btn-whatsapp" id="btnOrdenar">Ordenar por WhatsApp</button>
+  <!-- Interactive Coffee Lab -->
+  <section id="lab" class="py-20 px-6 bg-roast-surface border-y border-white/5">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-roast-gold font-extrabold text-xs uppercase tracking-widest">Experiencia Interactiva</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-extrabold mt-2 text-white">Laboratorio de Extracción & Orígenes</h2>
+        <p class="text-roast-muted text-sm sm:text-base mt-2">Personaliza tu taza ideal combinando el método de extracción artesanal con tu grano preferido.</p>
       </div>
-    </section>
-  </main>
 
-  <!-- Script integrado para procesar el pedido directamente a WhatsApp -->
+      <div class="bg-roast-card p-6 sm:p-10 rounded-3xl border border-white/10 max-w-5xl mx-auto shadow-2xl">
+        <div class="grid lg:grid-cols-2 gap-8">
+          <!-- Controls Left -->
+          <div class="space-y-6">
+            <div>
+              <label class="block text-xs font-extrabold uppercase tracking-widest text-roast-gold mb-3">1. Selecciona el Grano de Origen:</label>
+              <div class="space-y-3" id="origin-selector">
+                <button onclick="selectOrigin('oaxaca')" id="origin-oaxaca" class="origin-btn w-full p-4 rounded-2xl border-2 border-roast-accent bg-roast-accent/10 text-left transition-all flex justify-between items-center">
+                  <div>
+                    <h4 class="font-display font-bold text-white text-sm">Oaxaca - Pluma Hidalgo</h4>
+                    <span class="text-xs text-roast-muted">Tueste Medio • Tono Achocolate y Floral</span>
+                  </div>
+                  <span class="text-xs font-bold text-roast-gold">SCA 87.5</span>
+                </button>
+                <button onclick="selectOrigin('chiapas')" id="origin-chiapas" class="origin-btn w-full p-4 rounded-2xl border-2 border-white/10 text-left transition-all hover:border-roast-accent/50 flex justify-between items-center">
+                  <div>
+                    <h4 class="font-display font-bold text-white text-sm">Chiapas - Jaltenango</h4>
+                    <span class="text-xs text-roast-muted">Tueste Claro/Medio • Notas a Avellana y Dulzor Cítrico</span>
+                  </div>
+                  <span class="text-xs font-bold text-roast-gold">SCA 86.0</span>
+                </button>
+                <button onclick="selectOrigin('veracruz')" id="origin-veracruz" class="origin-btn w-full p-4 rounded-2xl border-2 border-white/10 text-left transition-all hover:border-roast-accent/50 flex justify-between items-center">
+                  <div>
+                    <h4 class="font-display font-bold text-white text-sm">Veracruz - Coatepec</h4>
+                    <span class="text-xs text-roast-muted">Tueste Medio • Cuerpo Sedoso y Caramelo</span>
+                  </div>
+                  <span class="text-xs font-bold text-roast-gold">SCA 88.0</span>
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-extrabold uppercase tracking-widest text-roast-gold mb-3">2. Selecciona el Método de Extracción:</label>
+              <div class="grid grid-cols-2 gap-3" id="method-selector">
+                <button onclick="selectMethod('v60')" id="method-v60" class="method-btn p-3 rounded-xl border-2 border-roast-accent bg-roast-accent/10 text-center transition-all">
+                  <span class="block font-display font-bold text-white text-sm">V60 Pour Over</span>
+                  <span class="text-[10px] text-roast-muted">Taza Limpia & Compleja</span>
+                </button>
+                <button onclick="selectMethod('french')" id="method-french" class="method-btn p-3 rounded-xl border-2 border-white/10 text-center transition-all hover:border-roast-accent/50">
+                  <span class="block font-display font-bold text-white text-sm">Prensa Francesa</span>
+                  <span class="text-[10px] text-roast-muted">Cuerpo Denso & Aceites</span>
+                </button>
+                <button onclick="selectMethod('aeropress')" id="method-aeropress" class="method-btn p-3 rounded-xl border-2 border-white/10 text-center transition-all hover:border-roast-accent/50">
+                  <span class="block font-display font-bold text-white text-sm">Aeropress</span>
+                  <span class="text-[10px] text-roast-muted">Dulzor & Acidez Balanceada</span>
+                </button>
+                <button onclick="selectMethod('chemex')" id="method-chemex" class="method-btn p-3 rounded-xl border-2 border-white/10 text-center transition-all hover:border-roast-accent/50">
+                  <span class="block font-display font-bold text-white text-sm">Chemex</span>
+                  <span class="text-[10px] text-roast-muted">Filtro Grueso ultra brillante</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sensory Profile Dashboard Right -->
+          <div class="bg-roast-surface p-6 rounded-2xl border border-white/10 flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] uppercase tracking-widest text-roast-gold font-extrabold block mb-1">Perfil Sensorial Generado</span>
+              <h3 class="font-display text-2xl font-bold text-white" id="lab-title">V60 + Pluma Hidalgo</h3>
+              <p class="text-xs text-roast-muted mt-2 leading-relaxed" id="lab-desc">Una extracción de papel que resalta la acidez cítrica brillante del grano oaxaqueño, ofreciendo una taza sumamente aromática con final prolongado a cacao.</p>
+
+              <!-- Radar Metrics -->
+              <div class="mt-6 space-y-4">
+                <div>
+                  <div class="flex justify-between text-xs mb-1">
+                    <span class="text-roast-muted">Intensidad / Cuerpo</span>
+                    <span class="text-roast-gold font-bold" id="val-body">3 / 5</span>
+                  </div>
+                  <div class="w-full bg-roast-dark rounded-full h-2 overflow-hidden">
+                    <div id="bar-body" class="bg-roast-accent h-2 rounded-full transition-all duration-300" style="width: 60%"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex justify-between text-xs mb-1">
+                    <span class="text-roast-muted">Acidez Cítrica</span>
+                    <span class="text-roast-gold font-bold" id="val-acidity">4 / 5</span>
+                  </div>
+                  <div class="w-full bg-roast-dark rounded-full h-2 overflow-hidden">
+                    <div id="bar-acidity" class="bg-roast-gold h-2 rounded-full transition-all duration-300" style="width: 80%"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex justify-between text-xs mb-1">
+                    <span class="text-roast-muted">Dulzura Residual</span>
+                    <span class="text-roast-gold font-bold" id="val-sweet">4 / 5</span>
+                  </div>
+                  <div class="w-full bg-roast-dark rounded-full h-2 overflow-hidden">
+                    <div id="bar-sweet" class="bg-roast-accent h-2 rounded-full transition-all duration-300" style="width: 80%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-6 border-t border-white/10 flex justify-between items-center mt-6">
+              <div>
+                <span class="text-[10px] text-roast-muted uppercase block">Precio Método Lab</span>
+                <span class="font-display text-2xl font-extrabold text-white" id="lab-price">$75.00 MXN</span>
+              </div>
+              <button onclick="orderLabCombination()" class="bg-roast-accent hover:bg-roast-gold text-roast-dark px-6 py-3 rounded-xl font-extrabold text-xs uppercase tracking-wider transition-all flex items-center gap-2">
+                <i class="ph-bold ph-shopping-cart"></i> Pedir este Método
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section id="menu" class="py-20 px-6 max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-white/10 pb-6">
+      <div>
+        <span class="text-roast-gold font-extrabold text-xs uppercase tracking-widest">Barra & Cocina</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-extrabold mt-1 text-white">Menú de Especialidad</h2>
+      </div>
+      <div class="flex gap-2 mt-4 md:mt-0 overflow-x-auto pb-2">
+        <button onclick="filterCategory('all')" class="cat-filter active px-4 py-2 rounded-full text-xs font-bold bg-roast-accent text-roast-dark">Todos</button>
+        <button onclick="filterCategory('espresso')" class="cat-filter px-4 py-2 rounded-full text-xs font-bold bg-roast-card text-roast-muted hover:bg-roast-accent hover:text-roast-dark transition-colors">Barra Espresso</button>
+        <button onclick="filterCategory('cold')" class="cat-filter px-4 py-2 rounded-full text-xs font-bold bg-roast-card text-roast-muted hover:bg-roast-accent hover:text-roast-dark transition-colors">Cold Brew & Fríos</button>
+        <button onclick="filterCategory('bistro')" class="cat-filter px-4 py-2 rounded-full text-xs font-bold bg-roast-card text-roast-muted hover:bg-roast-accent hover:text-roast-dark transition-colors">Bistro & Brunch</button>
+      </div>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" id="menu-grid">
+      <!-- Dynamic Menu Cards -->
+    </div>
+  </section>
+
+  <!-- Pick-Up Express -->
+  <section id="pickup" class="py-20 px-6 bg-roast-surface border-t border-white/5">
+    <div class="max-w-4xl mx-auto bg-roast-card p-8 rounded-3xl border border-white/10 shadow-2xl space-y-6">
+      <div class="text-center">
+        <span class="text-roast-gold text-xs font-extrabold uppercase tracking-widest">Sin Filas</span>
+        <h2 class="font-display text-3xl font-extrabold text-white mt-1">Pick-Up Express en Sucursal</h2>
+        <p class="text-xs text-roast-muted mt-1">Programa tu pedido y pasa por tu café listo para llevar a la hora exacta.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-roast-muted mb-2">Tu Nombre</label>
+          <input type="text" id="pickup-name" placeholder="Ej. Carlos Martínez" class="w-full bg-roast-dark border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-roast-accent">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-roast-muted mb-2">Hora Estimada de Recolección</label>
+          <select id="pickup-time" class="w-full bg-roast-dark border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-roast-accent">
+            <option>En 15 Minutos</option>
+            <option>En 30 Minutos</option>
+            <option>En 45 Minutos</option>
+            <option>Hora Específica (Confirmar por WhatsApp)</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-xs font-bold uppercase tracking-wider text-roast-muted mb-2">Detalles Adicionales / Indicaciones</label>
+        <textarea id="pickup-notes" rows="2" placeholder="Ej. Leche de almendra, poco hielo..." class="w-full bg-roast-dark border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-roast-accent"></textarea>
+      </div>
+
+      <button onclick="sendPickupOrder()" class="w-full bg-roast-accent hover:bg-roast-gold text-roast-dark py-4 rounded-xl font-extrabold text-sm uppercase tracking-wider transition-all flex items-center justify-center gap-2">
+        <i class="ph-bold ph-whatsapp-logo text-lg"></i> Enviar Pedido Express a WhatsApp
+      </button>
+    </div>
+  </section>
+
+  <!-- Product Modal Inspector -->
+  <div id="product-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-roast-card rounded-3xl max-w-xl w-full p-6 sm:p-8 relative shadow-2xl border border-white/15">
+      <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-roast-surface hover:bg-roast-accent hover:text-roast-dark flex items-center justify-center transition-colors text-white">
+        <i class="ph-bold ph-x"></i>
+      </button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-roast-dark text-white border-t border-white/10 py-12 px-6 text-center space-y-4">
+    <h3 class="font-display text-2xl font-extrabold tracking-tight">CAFÉ CENTRAL</h3>
+    <p class="text-xs text-roast-muted max-w-md mx-auto">Specialty Coffee & Artisan Bistro. Todos los derechos reservados © 2026.</p>
+    <div class="pt-4 border-t border-white/5 text-[11px] text-roast-muted/60">
+      Plataforma desarrollada bajo el estándar <strong>WaaS Completed</strong> por <strong>Black Gold Digital</strong>.
+    </div>
+  </footer>
+
+  <!-- App Script -->
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const TELEFONO_WHATSAPP = "528611265737"; // Cambia por el número del cliente
-      const menuItems = document.querySelectorAll(".menu-item");
-      const btnOrdenar = document.getElementById("btnOrdenar");
+    const origins = {
+      oaxaca: { name: 'Oaxaca - Pluma Hidalgo', sca: '87.5', desc: 'Tueste Medio • Tono Achocolate y Floral con acidez brillante.', body: 3, acidity: 4, sweet: 4, basePrice: 75 },
+      chiapas: { name: 'Chiapas - Jaltenango', sca: '86.0', desc: 'Tueste Claro/Medio • Notas a Avellana y Dulzor Cítrico suave.', body: 2, acidity: 5, sweet: 3, basePrice: 70 },
+      veracruz: { name: 'Veracruz - Coatepec', sca: '88.0', desc: 'Tueste Medio • Cuerpo Sedoso, caramelo y toque especiado.', body: 4, acidity: 3, sweet: 5, basePrice: 80 }
+    };
 
-      // Selección visual de productos
-      menuItems.forEach(item => {
-        item.addEventListener("click", () => {
-          item.classList.toggle("selected");
-        });
+    const methods = {
+      v60: { name: 'V60 Pour Over', mod: 0, text: 'Taza limpia que resalta notas ácidas y florales.' },
+      french: { name: 'Prensa Francesa', mod: 5, text: 'Cuerpo denso con aceites aromáticos naturales.' },
+      aeropress: { name: 'Aeropress', mod: 10, text: 'Extracción a presión con dulzor muy acentuado.' },
+      chemex: { name: 'Chemex', mod: 10, text: 'Filtrado de papel grueso ultra cristalino.' }
+    };
+
+    let selectedOriginKey = 'oaxaca';
+    let selectedMethodKey = 'v60';
+
+    const menuData = [
+      { id: '1', name: 'Flat White Doble Shot', category: 'espresso', price: 65, img: 'https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&w=600&q=80', desc: 'Doble shot de espresso Ristretto con microespuma de leche cremosa y sedosa.' },
+      { id: '2', name: 'Cold Brew 18 Horas', category: 'cold', price: 75, img: 'https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=600&q=80', desc: 'Infusión en frío durante 18 horas de grano oaxaqueño. Baja acidez y dulzor natural.' },
+      { id: '3', name: 'Toast de Aguacate & Huevo Poché', category: 'bistro', price: 135, img: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=600&q=80', desc: 'Pan de masa madre de la casa, aguacate laminado, huevo orgánico poché y hojuelas de chile.' },
+      { id: '4', name: 'Espresso Tonic Cítrico', category: 'cold', price: 80, img: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80', desc: 'Shot de espresso extracción caliente sobre agua tónica artesanal y rodaja de pomelo.' },
+      { id: '5', name: 'Capuchino Artesanal Vainilla', category: 'espresso', price: 70, img: 'https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=600&q=80', desc: 'Espresso intenso con jarabe de vainilla natural de Papantla y leche texturizada.' },
+      { id: '6', name: 'Croissant Sándwich Jamón Serrano', category: 'bistro', price: 150, img: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80', desc: 'Hojaldre mantequilla horneado relleno de jamón serrano, queso gruyère y rúcula.' }
+    ];
+
+    function selectOrigin(key) {
+      selectedOriginKey = key;
+      document.querySelectorAll('.origin-btn').forEach(btn => {
+        btn.classList.remove('border-roast-accent', 'bg-roast-accent/10');
+        btn.classList.add('border-white/10');
       });
+      document.getElementById(`origin-${key}`).classList.add('border-roast-accent', 'bg-roast-accent/10');
+      document.getElementById(`origin-${key}`).classList.remove('border-white/10');
+      updateLabDashboard();
+    }
 
-      // Enviar pedido por WhatsApp
-      if (btnOrdenar) {
-        btnOrdenar.addEventListener("click", (e) => {
-          e.preventDefault();
+    function selectMethod(key) {
+      selectedMethodKey = key;
+      document.querySelectorAll('.method-btn').forEach(btn => {
+        btn.classList.remove('border-roast-accent', 'bg-roast-accent/10');
+        btn.classList.add('border-white/10');
+      });
+      document.getElementById(`method-${key}`).classList.add('border-roast-accent', 'bg-roast-accent/10');
+      document.getElementById(`method-${key}`).classList.remove('border-white/10');
+      updateLabDashboard();
+    }
 
-          const seleccionados = document.querySelectorAll(".menu-item.selected");
-          let mensaje = "¡Hola CAFÉ CENTRAL! Me gustaría hacer el siguiente pedido:\n";
+    function updateLabDashboard() {
+      const o = origins[selectedOriginKey];
+      const m = methods[selectedMethodKey];
 
-          if (seleccionados.length > 0) {
-            seleccionados.forEach(item => {
-              const producto = item.getAttribute("data-product");
-              const precio = item.getAttribute("data-price");
-              mensaje += `• ${producto} (${precio})\n`;
-            });
-            mensaje += "\n¿Cuál es el tiempo estimado de entrega o preparación?";
-          } else {
-            mensaje += "Hola, me gustaría conocer su menú completo y ubicación.";
-          }
+      document.getElementById('lab-title').innerText = `${m.name} + ${o.name.split('-')[0]}`;
+      document.getElementById('lab-desc').innerText = `${o.desc} Extraído en ${m.name}: ${m.text}`;
+      
+      const price = o.basePrice + m.mod;
+      document.getElementById('lab-price').innerText = `$${price.toFixed(2)} MXN`;
 
-          const urlWhatsApp = `https://api.whatsapp.com/send?phone=${TELEFONO_WHATSAPP}&text=${encodeURIComponent(mensaje)}`;
-          window.open(urlWhatsApp, "_blank");
-        });
-      }
-    });
+      document.getElementById('val-body').innerText = `${o.body} / 5`;
+      document.getElementById('bar-body').style.width = `${(o.body / 5) * 100}%`;
+
+      document.getElementById('val-acidity').innerText = `${o.acidity} / 5`;
+      document.getElementById('bar-acidity').style.width = `${(o.acidity / 5) * 100}%`;
+
+      document.getElementById('val-sweet').innerText = `${o.sweet} / 5`;
+      document.getElementById('bar-sweet').style.width = `${(o.sweet / 5) * 100}%`;
+    }
+
+    function orderLabCombination() {
+      const o = origins[selectedOriginKey];
+      const m = methods[selectedMethodKey];
+      const price = document.getElementById('lab-price').innerText;
+      const msg = `Hola Café Central, me gustaría ordenar el método Lab: ${m.name} con Grano ${o.name} (${price}).`;
+      window.open(`https://api.whatsapp.com/send?phone=528611265737&text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    function initMenuCards() {
+      const grid = document.getElementById('menu-grid');
+      grid.innerHTML = menuData.map(item => `
+        <div class="bg-roast-card rounded-3xl overflow-hidden border border-white/10 shadow-lg hover:border-roast-accent/50 transition-all duration-300 flex flex-col group" data-category="${item.category}">
+          <div class="relative h-52 overflow-hidden">
+            <img src="${item.img}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="${item.name}">
+            <span class="absolute top-4 left-4 bg-roast-dark/80 backdrop-blur-md text-roast-gold text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full border border-white/10">${item.category}</span>
+          </div>
+          <div class="p-6 flex flex-col flex-grow justify-between space-y-4">
+            <div>
+              <h3 class="font-display font-bold text-lg text-white mb-1">${item.name}</h3>
+              <p class="text-roast-muted text-xs leading-relaxed line-clamp-2">${item.desc}</p>
+            </div>
+            <div class="flex items-center justify-between pt-4 border-t border-white/10">
+              <span class="font-display font-bold text-lg text-roast-accent">$${item.price} MXN</span>
+              <button onclick="openModal('${item.id}')" class="text-xs font-bold text-white hover:text-roast-gold flex items-center gap-1 transition-colors">
+                Ver Detalles <i class="ph-bold ph-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterCategory(cat) {
+      document.querySelectorAll('.cat-filter').forEach(btn => {
+        btn.classList.remove('bg-roast-accent', 'text-roast-dark');
+        btn.classList.add('bg-roast-card', 'text-roast-muted');
+      });
+      event.target.classList.add('bg-roast-accent', 'text-roast-dark');
+      event.target.classList.remove('bg-roast-card', 'text-roast-muted');
+
+      document.querySelectorAll('#menu-grid > div').forEach(card => {
+        if (cat === 'all' || card.dataset.category === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function openModal(id) {
+      const item = menuData.find(i => i.id === id);
+      document.getElementById('modal-content').innerHTML = `
+        <img src="${item.img}" class="w-full h-48 object-cover rounded-2xl mb-4" alt="${item.name}">
+        <span class="text-[10px] font-extrabold text-roast-gold uppercase tracking-widest block mb-1">${item.category}</span>
+        <h3 class="font-display font-bold text-2xl text-white mb-2">${item.name}</h3>
+        <p class="text-roast-muted text-xs leading-relaxed mb-6">${item.desc}</p>
+        <div class="flex justify-between items-center pt-4 border-t border-white/10">
+          <span class="font-display font-bold text-2xl text-roast-accent">$${item.price} MXN</span>
+          <button onclick="closeModal()" class="bg-roast-accent text-roast-dark px-6 py-2.5 rounded-xl font-extrabold text-xs uppercase tracking-wider">Cerrar</button>
+        </div>
+      `;
+      document.getElementById('product-modal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('product-modal').classList.add('hidden');
+    }
+
+    function sendPickupOrder() {
+      const name = document.getElementById('pickup-name').value || 'Cliente';
+      const time = document.getElementById('pickup-time').value;
+      const notes = document.getElementById('pickup-notes').value;
+      const msg = `Hola Café Central, soy ${name}. Quisiera solicitar un Pick-Up Express para recolección: ${time}. Indicaciones: ${notes || 'Sin notas'}.`;
+      window.open(`https://api.whatsapp.com/send?phone=528611265737&text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    window.onload = function() {
+      initMenuCards();
+      updateLabDashboard();
+    };
   </script>
 </body>
 </html>
